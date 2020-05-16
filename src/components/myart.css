@@ -1,0 +1,68 @@
+.my-div{
+    /* border : 1px solid white; */
+    margin-top: 10px;
+    color: white;
+    height: 85%;
+    overflow-x: hidden; 
+   overflow-y: scroll;
+}
+
+.my-div::-webkit-scrollbar { 
+    display: none; 
+} 
+
+.div-align{
+    display: flex;
+    justify-content: flex-start; 
+    margin-top: 10px;
+}
+
+.showInfo{
+    /* border : 1px dotted white; */
+    margin-left: 20px;
+    width: 90%;
+}
+
+.btn-del{
+  border:none;  
+  border-radius: 3px;
+  height: 30px;
+  width: 100px;
+  background-color: red;
+  float: right;
+  margin-right:10px ;
+  margin-top: 15px;
+  color: white;
+  font-size: large;
+}
+.btn-del:hover{
+    cursor: pointer;
+    background-color: tomato;
+}
+
+.show-text{
+    height: 70%;
+    width: 100%;
+    /* border:1px solid yellow; */
+    overflow-x: hidden; 
+   overflow-y: scroll;    
+}
+.show-text::-webkit-scrollbar { 
+    display: none; 
+} 
+.btn-align{
+    height: 30%;
+    width: 100%;
+    /* border : 1px solid red; */
+}
+
+div.span-click{
+    margin-left: 38px;
+    font-size: large;
+    position: -webkit-sticky;
+  position: sticky;
+}
+.span-click:hover{
+    color: yellow;
+    cursor: pointer;
+} 
