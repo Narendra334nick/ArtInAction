@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 
 export class signup extends Component {
 
@@ -34,7 +35,7 @@ export class signup extends Component {
         if(payload.name==='' || payload.dob==='' || payload.username==='' || payload.password===''){
             alert('Enter Input Fields Properly')
         }else{
-                fetch('https://aia-ux.herokuapp.com/signup',{
+                fetch('http://aia-ux.herokuapp.com/signup',{
                 method:'POST',
                 headers: {
                     Accept: "application/json",
@@ -64,7 +65,7 @@ export class signup extends Component {
                            
                             <input type="password" className="login-input" placeholder="Password"  name="password" value={this.state.password} onChange={this.handlechange}/>
                            
-                            <button type = 'submit' className="login-btn" onClick={this.signup}>Signup</button>
+                            <button type = 'submit' className="login-btn" onClick={this.signup}><Link to="/login">Signup</Link></button>
 
                </div>
 
