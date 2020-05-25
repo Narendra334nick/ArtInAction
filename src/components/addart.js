@@ -32,8 +32,7 @@ export class addart extends Component {
                 body: formData,
     
             }).then(res=>{
-                document.getElementById('img')
-                .setAttribute('src', `https://aia-ux.herokuapp.com/image/${file[0].name}`)
+                document.getElementById('img').innerHTML = "Image uploaded SuccessFully check myArt";
                 console.log('success');
             })
             .catch(function (err) {
@@ -72,6 +71,9 @@ export class addart extends Component {
                     <input className="img-input"type='file' id='image'/>
                     <textarea className="login-input-img" id="desc" placeholder="Tell me about your work"></textarea><br/>
                     <button  className="login-btn" onClick={this.post} type ='submit'>Upload</button><br/>
+                    <div id='img'>
+
+                    </div>
                </div>
             </div>
         )
