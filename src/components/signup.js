@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from "react-router-dom";
+import {Link,withRouter} from "react-router-dom";
 
 export class signup extends Component {
 
@@ -44,9 +44,22 @@ export class signup extends Component {
                 body: JSON.stringify(payload),
                 }).then(resolve=>{
                     console.log('successs')
-                }).catch(err=>{
-                    if(err) console.log(err);
-            })
+                }).then(()=>{
+                    this.setState({
+                        name:"",
+                        dob:"",
+                        username:"",
+                        password:""
+                    })
+                    document.getElementById('mySignMsg').innerHTML="signup Successful";
+                })
+                .then(()=>{
+                       setTimeout(() => {
+                        this.props.history.push('/login'); 
+                       }, 1000);
+                })
+                
+               
         }
     }
 
@@ -65,14 +78,16 @@ export class signup extends Component {
                            
                             <input type="password" className="login-input" placeholder="Password"  name="password" value={this.state.password} onChange={this.handlechange}/>
                            
-                            <button type = 'submit' className="login-btn" onClick={this.signup}><Link to="/login">Signup</Link></button>
+                            <button type = 'submit' className="login-btn" onClick={this.signup}>Signup</button>
 
                </div>
-
+                <div id='mySignMsg'>
+                    
+                </div>
             </div>
         </div>
         )
     }
 }
 
-export default signup
+export default withRouter(signup)

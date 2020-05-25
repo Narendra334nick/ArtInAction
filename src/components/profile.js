@@ -4,12 +4,16 @@ import AddArt from './addart';
 import MyArt from './myart'; 
 import './profile.css'
 import ProNav from './proNav'
+import { withRouter } from "react-router-dom";
 
 export class profile extends Component {
     
-  
+    constructor(props){
+        super(props);
+    }
     logout(){
         localStorage.clear();
+        this.props.history.push('/');
     }
 
     render() {
@@ -34,4 +38,4 @@ export class profile extends Component {
     }
 }
 
-export default profile
+export default withRouter(profile)

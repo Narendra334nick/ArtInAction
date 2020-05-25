@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import { withRouter } from "react-router-dom";
-import {Link} from 'react-router-dom';
+
 export class login extends Component {
         constructor(props){
             super(props);
             this.state = {
                 username:"",
                 password:"",
-                redirect:false
+                isLoggedIn:false
             }
         }
        
@@ -34,6 +33,7 @@ export class login extends Component {
             if(payload.username==="" || payload.password===""){
                 alert("Enter Input Fields Properly")
             }else{
+                // console.log(payload);
                  await fetch('https://aia-ux.herokuapp.com/login',{
                     method:'POST',
                     headers: {
@@ -46,19 +46,24 @@ export class login extends Component {
                     return res.json()
                 })
                 .then((data)=>{
-                   
+                    // console.log(data);
                     localStorage.setItem('jwt',JSON.stringify(data))
-                    // this.setState({
-                    //     username:'',
-                    //     password:"",
-                    //     redirect:'true'
-                    // })
-                // }).then(()=>{
-                //    if(this.state.redirect){
-                //        console.log('from redirect');
-                //     return <Redirect to='/profile'/>
-                //    }
-                }) 
+                    this.setState({
+                        username:'',
+                        password:"",
+                        isLoggedIn:true
+                    })
+                    document.getElementById('showMsg').innerHTML="Login SuccessFul";
+                })
+                .then(()=>{
+                   setTimeout(()=>{
+                    this.props.history.push('/profile');
+                   },1000);
+                })
+                .catch((err)=>{
+                    console.log('err');
+                    document.getElementById('showMsg').innerHTML="Wrong Crediatials";
+                })
             }   
         }
 
@@ -74,7 +79,10 @@ export class login extends Component {
 
                         <input type="password" className="login-input" placeholder="password" name="password" value={this.state.password} onChange={this.handlechange}/>
 
-                        <button type = 'submit' className="login-btn" onClick={this.login}> <Link to="/profile">Login</Link></button>
+                        <button type = 'submit' className="login-btn" onClick={this.login}> Login</button>
+                    </div><br/>
+                    <div id='showMsg'>
+                        
                     </div>
                 </div>
             </div>
@@ -82,4 +90,4 @@ export class login extends Component {
     }
 }
 
-export default login
+export default withRouter(login)

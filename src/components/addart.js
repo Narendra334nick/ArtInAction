@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './addart.css';
 
 export class addart extends Component {
     
@@ -14,52 +15,64 @@ export class addart extends Component {
         formData.append('img',file[0])
 
 
-        const payload = {
-            token:jwt.token,
-            username:jwt.username,
-            filename:file[0].name,
-            desc:desc
+       
+       
+        if(jwt){
+
+            const payload = {
+                token:jwt.token,
+                username:jwt.username,
+                filename:file[0].name,
+                desc:desc
+            }
+             // console.log(payload)
+            fetch('https://aia-ux.herokuapp.com/image',{
+            
+                method: 'POST',
+                body: formData,
+    
+            }).then(res=>{
+                document.getElementById('img')
+                .setAttribute('src', `https://aia-ux.herokuapp.com/image/${file[0].name}`)
+                console.log('success');
+            })
+            .catch(function (err) {
+                console.log("Something went wrong!", err);
+            });
+    
+            //sending data to addImage
+           fetch('https://aia-ux.herokuapp.com/addImage',{
+                
+                method: 'POST',
+                headers: {
+                    // Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload)
+            })
+        }else{
+            alert('You are not logged-in');
+            console.log('You are not logged-in');
         }
 
-        // console.log(payload)
-
-        fetch('https://aia-ux.herokuapp.com/image',{
-            
-            method: 'POST',
-            body: formData,
-
-        }).then(res=>{
-            // document.getElementById('img')
-            // .setAttribute('src', `https://aia-ux.herokuapp.com/image/${file[0].name}`)
-            console.log('success');
-        })
-        .catch(function (err) {
-            console.log("Something went wrong!", err);
-        });
-
-        //sending data to addImage
-       fetch('https://aia-ux.herokuapp.com/addImage',{
-            
-            method: 'POST',
-            headers: {
-                // Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload)
-        })
+       
     }
 
     render() {
         const stye = {
-            border:'1px solid yellow'
+            // border:'1px solid yellow',
+            marginTop:'20px',
+            display:'flex',
+            justifyContent:'center',
+            alignItems:"center"
         }
         return (
             <div style={stye}>
-               
-                    <input type='file' id='image'/><br/>
-                    <input type="text" id="desc" placeholder="Tell me about your work"></input><br/>
-                    <button onClick={this.post} type ='submit'>Upload</button><br/>
-               
+               <div className='my-add-art'>
+                    <input className="img-input"type='file' id='image'/>
+                    <textarea className="login-input-img" id="desc" placeholder="Tell me about your work"></textarea><br/>
+                    <button  className="login-btn" onClick={this.post} type ='submit'>Upload</button><br/>
+               </div>
             </div>
         )
     }

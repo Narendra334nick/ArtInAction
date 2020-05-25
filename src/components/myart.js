@@ -33,23 +33,30 @@ export class myart extends Component {
 
         const user = JSON.parse(localStorage.getItem('jwt'));
         // console.log(user);
-
-        fetch('https://aia-ux.herokuapp.com/getUser',{
-            method:"GET",
-            headers:{
-                'Content-Type':'application/json',
-                'Accept':'application/json',
-                Authorization: `Bearer ${user.token}`
-                // Authorization: `Bearer ${userData.token}`,
-            }
-        }).then((res)=>{
-            return res.json()
-        }).then((res)=>{
-            this.setState({
-                isloaded:true,
-                items:res.doc
+        if(user){
+            fetch('https://aia-ux.herokuapp.com/getUser',{
+                method:"GET",
+                headers:{
+                    'Content-Type':'application/json',
+                    'Accept':'application/json',
+                    Authorization: `Bearer ${user.token}`
+                    // Authorization: `Bearer ${userData.token}`,
+                }
+            }).then((res)=>{
+                return res.json()
+            }).then((res)=>{
+                this.setState({
+                    isloaded:true,
+                    items:res.doc
+                })
             })
-        })
+        }else{
+
+            alert('You are not logged-In');
+            console.log('You are not logged-In')
+        }
+
+       
        
     }
 
