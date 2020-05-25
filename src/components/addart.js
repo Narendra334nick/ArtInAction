@@ -10,6 +10,7 @@ export class addart extends Component {
         // console.log(jwt);
 
         const file = document.getElementById('image').files
+        console.log(file);
         const desc = document.getElementById('desc').value
         const formData = new FormData()
         formData.append('img',file[0])
@@ -36,7 +37,7 @@ export class addart extends Component {
                 console.log('success');
             })
             .catch(function (err) {
-                console.log("Something went wrong!", err);
+                document.getElementById('img').innerHTML = "Error Occured";
             });
     
             //sending data to addImage

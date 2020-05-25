@@ -53,7 +53,7 @@ export class login extends Component {
                         password:"",
                         isLoggedIn:true
                     })
-                    document.getElementById('showMsg').innerHTML="Login SuccessFul";
+                    document.getElementById('showMsg').innerHTML=`${data.message}`;
                 })
                 .then(()=>{
                    setTimeout(()=>{
@@ -62,7 +62,7 @@ export class login extends Component {
                 })
                 .catch((err)=>{
                     console.log('err');
-                    document.getElementById('showMsg').innerHTML="Wrong Crediatials";
+                    document.getElementById('showMsg').innerHTML=`Invalid User Credantials`;
                 })
             }   
         }
