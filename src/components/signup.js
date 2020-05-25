@@ -35,7 +35,7 @@ export class signup extends Component {
         if(payload.name==='' || payload.dob==='' || payload.username==='' || payload.password===''){
             alert('Enter Input Fields Properly')
         }else{
-                fetch('http://aia-ux.herokuapp.com/signup',{
+                fetch('https://aia-ux.herokuapp.com/signup',{
                 method:'POST',
                 headers: {
                     Accept: "application/json",
