@@ -69,7 +69,7 @@ export class signup extends Component {
             <div className='outer'>
             <div className='inner'>
                <div className="login">
-                <span style={{color:"black",fontFamily:" 'Times New Roman', Times, serif"}}><h2>signUp Here!!</h2></span>
+                <span style={{color:"black",fontFamily:" 'Times New Roman', Times, serif"}}><h2>SignUp Here!!</h2></span>
                             <input type="text" className="login-input" placeholder="Name"  name="name" value={this.state.name} onChange={this.handlechange}/>
 
                             <input type="text" className="login-input" placeholder="DOB:dd/mm/yy"  name="dob" value={this.state.dob} onChange={this.handlechange}/>

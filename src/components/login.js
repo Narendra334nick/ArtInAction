@@ -74,7 +74,7 @@ export class login extends Component {
                 <div className='inner'>
                
                     <div className="login">
-                        <span style={{color:"black",fontFamily:" 'Times New Roman', Times, serif"}}><h2>login Here</h2></span>
+                        <span style={{color:"black",fontFamily:" 'Times New Roman', Times, serif"}}><h2>login Here!!</h2></span>
                         <input id='email'type="email" className="login-input" placeholder="UserName" name='username' value={this.state.username} onChange={this.handlechange}/>
 
                         <input type="password" className="login-input" placeholder="password" name="password" value={this.state.password} onChange={this.handlechange}/>

@@ -18,7 +18,7 @@ export class navBar extends Component {
 
             <div className="nav-elements2">
                     <span><Link to='/'>Home</Link></span>
-                    <span><Link to='/about'>About</Link></span>
+                    {/* <span><Link to='/about'>About</Link></span> */}
                     <span><Link to = '/contactus'>ContactUs</Link></span>
                     <span><Link to="/signup">SignUp</Link></span>
                     <span><Link to="/login">Login</Link> </span>
