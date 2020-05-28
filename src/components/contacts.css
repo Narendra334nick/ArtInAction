@@ -13,8 +13,8 @@
 
 .o-outer{
     position: absolute;
-    top: 115px;
-    height: 74%;
+    top: 85px;
+    height: 78%;
     width: 100%;
     display: flex;
     justify-content: center; 
@@ -38,7 +38,7 @@
 }
 
 .i-form{
-    background-color:white;
+    background-color: seashell;
     position: absolute;
     top:25%;
     right: 10px;

@@ -46,9 +46,9 @@ export class home extends Component {
             )
         }else if(!isLoaded){
             return(
-                <div className='outer-div'>
-                    <div className='inner-div'>
-                    Loading.... 
+                <div className='l-outer-div'>
+                    <div className='l-inner-div'>
+                        <div class="loader"></div>
                     </div>
                 </div>
             )

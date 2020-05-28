@@ -3,7 +3,10 @@ import './addart.css';
 
 export class addart extends Component {
     
-    
+    state = {
+        isLoaded:false
+    }
+
     post = e =>{
         e.preventDefault()
         const jwt = JSON.parse(localStorage.getItem('jwt'));

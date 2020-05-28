@@ -41,7 +41,7 @@
 
 .nav-block {
   position: absolute;
-  top: 30px;
+  top: 0px;
   width: 100%;
   height:80px;
   background: rgba(12, 12, 12, 0.7);
